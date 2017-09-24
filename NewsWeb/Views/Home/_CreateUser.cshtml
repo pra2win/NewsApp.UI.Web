@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+}
+
+<form id="addUserForm" class="form-horizontal" onsubmit="CreateNewUser(event);">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Create Admin</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="txtUserId">UserId</label>
+            <div class="col-md-4">
+                <input id="txtUserId" name="txtUserId" type="text" placeholder="Please Enter Userid" class="form-control input-md" required="">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="txtPassword">Password</label>
+            <div class="col-md-4">
+                <input id="txtPassword" name="txtPassword" type="password" placeholder="Please Enter Password" class="form-control input-md" required="">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="txtConfirmePassword">Confirme Password</label>
+            <div class="col-md-4">
+                <input id="txtConfirmePassword" name="txtConfirmePassword" type="password" placeholder="Please Enter Password again" class="form-control input-md" required="">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="txtFirstName">First Name</label>
+            <div class="col-md-4">
+                <input id="txtFirstName" name="txtFirstName" type="text" placeholder="Please Enter First Name" class="form-control input-md" required="">
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="txtLastName">Last Name</label>
+            <div class="col-md-4">
+                <input id="txtLastName" name="txtLastName" type="text" placeholder="Please Enter Last Name" class="form-control input-md" required="">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="txtEmail">Email</label>
+            <div class="col-md-4">
+                <input id="txtEmail" name="txtEmail" type="text" placeholder="Please Enter Email" class="form-control input-md" required="">
+            </div>
+        </div>
+
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="txtEmail">Mobile</label>
+            <div class="col-md-4">
+                <input id="txtMobile" name="txtMobile" type="text" placeholder="Please Enter Contact Number" class="form-control input-md" required="">
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="OptGender">Gender</label>
+            <div class="col-md-4">
+                <select id="OptGender" name="OptGender" class="form-control">
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                </select>
+            </div>
+        </div>
+
+       <div class="form-group">
+           <label class="col-md-4 control-label" for="OptUserType">User Type</label>
+           <div class="col-md-4">
+               <select id="OptUserType" name="OptUserType" class="form-control">
+                   <option value="1">User</option>
+                   <option value="2">Admin</option>
+                   <option value="3">Super Admin</option>
+               </select>
+               <small>User: Normal user has no access for portal, Admin: Only post news and view news, Super Admin:Craete user and aprove news.</small>
+           </div>
+       </div>      
+            
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="btnCraeteUser"></label>
+            <div class="col-md-4">
+                <input type="submit" id="btnCraeteUser" name="btnCraeteUser" class="btn btn-info">
+            </div>
+        </div>
+
+
+
+    </fieldset>
+</form>

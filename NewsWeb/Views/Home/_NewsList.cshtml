@@ -1,0 +1,104 @@
+﻿@model IEnumerable<NewsWeb.Models.generalNewsListReponse>
+
+@{
+    int UserType = 0;
+    if (Session["UserType"] != null)
+    {
+        UserType = Int32.Parse(Session["UserType"].ToString());
+    }
+}
+<div class="row">
+
+
+    @foreach (var news in Model)
+    {
+        <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+            <div class="list-group">
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading" id="newsTitle_@news.NewsId">@news.NewsTitle <small>@news.NewsByName</small></h4>
+                    <img src="@news.NewsPhotoUrl" class="thumbnail img-responsive img-rounded" />
+                    <p class="list-group-item-text" id="newsDesc_@news.NewsId">@news.NewsDescription <br /> <small>@news.CategoryName - @String.Format("{0:MM/dd/yyyy}", news.CreatedTs)</small></p>
+
+                    @if (UserType == 3 && !news.IsActive)
+                    {
+                        <div id="NewsButtons_@news.NewsId">
+                            <label class="control-label" for="saveNews">Send Notification</label>
+                            <input type="checkbox" id="IsNotify_@news.NewsId" name="IsNotify" class="">
+
+                            <input type="button" onclick="EditNews('@news.NewsId');" class="btn btn-default" value="Edit" />
+                            <input type="button" onclick="ApproveNews('@news.NewsId');" class="btn btn-primary" value="Approve" />
+
+                        </div>
+                    }
+                    else if (UserType == 3 && news.IsActive)
+                    {
+                        <span style="color:green">Approved</span>
+                    }
+                    else if (UserType == 2 && !news.IsActive)
+                    {
+                        <span style="color:red">Pendding</span>
+                    }
+                    else if (UserType == 2 && news.IsActive)
+                    {
+                        <span style="color:green">Approved</span>
+                    }
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+@*<table class="table table-condensed NewsList">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Posted</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.CategoryName
+                    </td>
+                    <td>
+
+                        @String.Format("{0:MM/dd/yyyy}", item.CreatedTs)
+                    </td>
+                    <td>
+                        <img style="width:116px" id="newImg_@item.NewsId" src="@item.NewsPhotoUrl" class="thumbnail" />
+                    </td>
+                    <td style="display:inline-block; width:400px;white-space: nowrap; overflow:hidden !important;text-overflow: ellipsis;">
+                        @item.NewsTitle
+                    </td>
+                    <td>
+                        @if (UserType==3 && !item.IsActive)
+                        {
+                            <div id="NewsButtons_@item.NewsId">
+                                <a href="#" onclick="EditNews('@item.NewsId');" class="btn btn-default">Edit</a>
+                                <a href="#" onclick="ApproveNews('@item.NewsId');" class="btn btn-primary">Approve</a>
+
+                            </div>
+                        }
+                        else if(UserType==3 && item.IsActive)
+                        {
+                            <span style="color:green">Approved</span>
+                        }
+                        else if (UserType == 2 && !item.IsActive)
+                        {
+                            <span style="color:red">Pendding</span>
+                        }
+                        else if (UserType == 2 && item.IsActive)
+                        {
+                            <span style="color:green">Approved</span>
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+
+    </table>*@
