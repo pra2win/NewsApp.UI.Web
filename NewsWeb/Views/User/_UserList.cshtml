@@ -1,0 +1,89 @@
+﻿@model IEnumerable<NewsWeb.Models.Domain.User>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            Active
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Mobile
+        </th>
+
+
+        <th>
+            Created Date
+        </th>
+        <th>
+            User Type
+        </th>
+        <th>
+            Total News Uploaded
+        </th>
+        <th>
+            Total News Approved
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.OrderBy(u => u.FirstName))
+    {
+        string check = "";
+        if (item.isActive) { check = "Checked"; }
+        <tr>
+            <td>
+                <input type="checkbox" id="chkActive_@item.UserRegistrationId" @check>
+            </td>
+            <td>
+                @item.FirstName @item.LastName
+            </td>
+            <td>
+                @item.EmailId
+            </td>
+            <td>
+                @item.MobileNo
+            </td>
+
+            <td>
+                @item.creatTs
+            </td>
+            <td>
+                @{
+                    var userType = "";
+                    if (item.userType == 1)
+                    {
+                        userType= "Normal User";
+                    }
+                    else if (item.userType == 2)
+                    {
+                        userType = "Admin";
+                    }
+                    else if (item.userType == 3)
+                    {
+                        userType = "Super Admin";
+                    }
+                    else
+                    {
+
+                    }
+                    @userType
+                }
+            </td>
+            <td>
+                @item.TotalNewsUploaded
+            </td>
+            <td>
+                @item.TotalNewsApproved
+            </td>
+
+        </tr>
+                    }
+
+</table>

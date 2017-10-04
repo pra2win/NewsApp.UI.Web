@@ -1,4 +1,5 @@
 ﻿using NewsWeb.Models;
+using NewsWeb.Models.Domain;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -72,6 +73,33 @@ namespace NewsWeb.Comman
             }
         }
 
+        public static List<User> GetUsers()
+        {
+            List<User> resp = new List<User>();
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = baseUri;
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                ///var content = new StringContent(JsonConvert.SerializeObject(null));
+                ///content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var response = client.GetAsync("api/manager/GetUsers").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var value = response.Content.ReadAsStringAsync();
+
+                    resp = JsonConvert.DeserializeObject<List<User>>(value.Result);
+                }
+                return resp;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public static List<generalNewsListReponse> NewsList()
         {
             var result = new List<generalNewsListReponse>();

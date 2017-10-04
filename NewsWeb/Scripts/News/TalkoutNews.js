@@ -306,3 +306,35 @@ $(document).ajaxError(function (xhr, props) {
     }
 });
 
+function ActiveMenu(id) {
+    $("#menu_NewsList").removeClass("active");
+    $("#menu_AddNews").removeClass("active");
+    $("#menu_AddAdmin").removeClass("active");
+    $("#menu_User").removeClass("active");
+
+    $("#" + id).toggleClass("active");
+}
+/*===================================================================================
+Function for User
+===================================================================================*/
+
+function LoadUserListView() {
+    $.ajax({
+        url: "/User/GetUsers",
+        cache: false,
+        type: "POST",
+
+        beforeSend: function () {
+            $("#loaddingModal").show();
+        },
+        complete: function () {
+            $("#loaddingModal").hide();
+        },
+        success: function (data) {
+            ActiveMenu("menu_User");
+           
+            AddNewsDiv.innerHTML = "";
+            PartialViewDiv.innerHTML = data;
+        }
+    })
+}

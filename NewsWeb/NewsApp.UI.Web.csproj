@@ -116,10 +116,13 @@
     <Compile Include="Comman\ServerBAL.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Authentication.cs" />
+    <Compile Include="Models\Domain\Constant.cs" />
+    <Compile Include="Models\Domain\User.cs" />
     <Compile Include="Models\RequestResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -214,6 +217,7 @@
     <Content Include="Views\Home\_NewsList.cshtml" />
     <Content Include="Views\Home\_CreateUser.cshtml" />
     <Content Include="Views\Home\_EditNews.cshtml" />
+    <Content Include="Views\User\_UserList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
